@@ -16,7 +16,8 @@ class Metasploit3 < Msf::Auxiliary
 
 	def initialize
 		super(
-			'Name'        	=> 'Foursquare Location Poster',
+			# 2
+			'Name'        	=> 'Foursquare Location Poster',	
 			'Version'     	=> '$Revision:$',
 			'Description'	=> 'Fuck with Foursquare, be anywhere you want to be by venue id',
 			'Author'        => ['CG'],
