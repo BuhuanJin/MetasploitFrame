@@ -31,6 +31,7 @@ class Metasploit3 < Msf::Auxiliary
 #todo pass in geocoords instead of venueid, create a venueid, other tom foolery
 		register_options(
 			[
+				# 3 
 				Opt::RHOST('api.foursquare.com'),
 				OptString.new('VENUEID', [ true, 'foursquare venueid', '185675']), #Louve Paris France
 				OptString.new('USERNAME', [ true, 'foursquare username', 'username']),
