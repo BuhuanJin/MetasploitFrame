@@ -33,7 +33,7 @@ class MetasploitModule < Msf::Auxiliary
 			[
 				# 3 
 				Opt::RHOST('api.foursquare.com'),
-				OptString.new('VENUEID',  [ true, 'foursquare venueid', '185675']), #Louve Paris France
+				OptString.new('VENUEID', [ true, 'foursquare venueid', '185675']), #Louve Paris France
 				OptString.new('USERNAME', [ true, 'foursquare username', 'username']),
 				OptString.new('PASSWORD', [ true, 'foursquare password', 'password']),
 			], self.class)
@@ -43,7 +43,7 @@ class MetasploitModule < Msf::Auxiliary
 	def run
 	
 		begin
-      # 4
+			# 4
 			user = datastore['USERNAME']
 			pass = datastore['PASSWORD']
 			venid = datastore['VENUEID']
@@ -54,12 +54,12 @@ class MetasploitModule < Msf::Auxiliary
 			print_status("Base64 Encoded User/Pass: #{user_pass}") #debug
 			print_status("Base64 Decoded User/Pass: #{decode}") #debug
 
-      # 5
+			# 5
 			res = send_request_cgi({
 				'uri'     => "/v1/checkin?vid=#{venid}",
-				'version'	=> "1.1",
+				'version' => "1.1",
 				'method'  => 'POST',
-				'data'   => postrequest,
+				'data'    => postrequest,
 				'headers' =>
 					{
 						'Authorization' => "Basic #{user_pass}",
@@ -67,13 +67,13 @@ class MetasploitModule < Msf::Auxiliary
 					}
 			}, 25)
 			
+			# 6
 			print_status("#{res}") #this outputs entire response, could probably do without this but its nice to see whats going on
 			end
 
+		# 7
 		rescue ::Rex::ConnectionRefused, ::Rex::HostUnreachable, ::Rex::ConnectionTimeout
 		rescue ::Timeout::Error, ::Errno::EPIPE =>e
 			puts e.message
 	end
 end
-
-
