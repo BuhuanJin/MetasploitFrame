@@ -67,9 +67,11 @@ class Metasploit3 < Msf::Auxiliary
 					}
 			}, 25)
 			
+			# 6
 			print_status("#{res}") #this outputs entire response, could probably do without this but its nice to see whats going on
 			end
 
+		# 7
 		rescue ::Rex::ConnectionRefused, ::Rex::HostUnreachable, ::Rex::ConnectionTimeout
 		rescue ::Timeout::Error, ::Errno::EPIPE =>e
 			puts e.message
