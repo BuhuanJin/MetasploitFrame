@@ -33,9 +33,6 @@ class Metasploit3 < Msf::Auxiliary
 			[
 				# 3 
 				Opt::RHOST('api.foursquare.com'),
-				Opt::RPORT(443),        # foursquare api port
-				OptString.new('SSL', [false, "Negotiate SSL/TLS for outgoing connections", true]) # required by foursquare api
-				
 				OptString.new('VENUEID', [ true, 'foursquare venueid', '185675']), #Louve Paris France
 				
 				# 8
@@ -49,11 +46,11 @@ class Metasploit3 < Msf::Auxiliary
 	
 		begin
 			# 4
-			user = datastore['USERNAME']
-			pass = datastore['PASSWORD']
+			user  = datastore['USERNAME']
+			pass  = datastore['PASSWORD']
 			venid = datastore['VENUEID']
 			user_pass = Rex::Text.encode_base64(user + ":" + pass)
-			decode = Rex::Text.decode_base64(user_pass)
+			decode    = Rex::Text.decode_base64(user_pass)
 			postrequest = "twitter=1\n" #add facebook=1 if you want facebook
 
 			print_status("Base64 Encoded User/Pass: #{user_pass}") #debug
