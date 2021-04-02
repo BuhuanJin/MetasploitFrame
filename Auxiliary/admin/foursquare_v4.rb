@@ -33,6 +33,9 @@ class MetasploitModule < Msf::Auxiliary
 			[
 				# 3 
 				Opt::RHOST('api.foursquare.com'),
+				Opt::RPORT(443),  # foursquare api port
+				OptString.new('SSL', [ false, "Negotiate SSL/TLS for outgoing connections", true ]) # required by foursquare api
+				
 				OptString.new('VENUEID', [ true, 'foursquare venueid', '185675']), #Louve Paris France
 				
 				# 8 
@@ -56,15 +59,9 @@ class MetasploitModule < Msf::Auxiliary
 
 			# 5
 			res = send_request_cgi({
-				'uri'     => "/v1/checkin?vid=#{venid}",
+				'uri'     => "/v2/checkins/add?oauth_token=#{oauth_token}&v=20170215&venueId= #{venueid}",
 				'version' => "1.1",
 				'method'  => 'POST',
-				'data'    => postrequest,
-				'headers' =>
-					{
-						'Authorization' => "Basic #{user_pass}",
-						'Proxy-Connection' =>  "Keep-Alive",
-					}
 			}, 25)
 			
 			# 6
