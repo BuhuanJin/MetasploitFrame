@@ -57,9 +57,9 @@ class Metasploit3 < Msf::Auxiliary
 			# 5
 			res = send_request_cgi({
 				'uri'     => "/v1/checkin?vid=#{venid}",
-				'version'	=> "1.1",
+				'version' => "1.1",
 				'method'  => 'POST',
-				'data'   => postrequest,
+				'data'    => postrequest,
 				'headers' =>
 					{
 						'Authorization' => "Basic #{user_pass}",
