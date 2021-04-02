@@ -40,7 +40,7 @@ class MetasploitModule < Msf::Auxiliary
 				
 				# 8 
 				OptString.new('OAUTH_TOKEN', [ true, 'foursquare oauth2 token', 'oauth_token']), # you should genarate oauth token from https://developer.foursquare.com with create your own app
-  			], self.calss)
+  			], self.class)
 	end
 	
 	def run
