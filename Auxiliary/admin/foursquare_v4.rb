@@ -34,12 +34,12 @@ class MetasploitModule < Msf::Auxiliary
 				# 3 
 				Opt::RHOST('api.foursquare.com'),
 				OptString.new('VENUEID', [ true, 'foursquare venueid', '185675']), #Louve Paris France
-				OptString.new('USERNAME', [ true, 'foursquare username', 'username']),
-				OptString.new('PASSWORD', [ true, 'foursquare password', 'password']),
-			], self.class)
-	
+				
+				# 8 
+				OptString.new('OAUTH_TOKEN', [ true, 'foursquare oauth2 token', 'oauth_token']), # you should genarate oauth token from https://developer.foursquare.com with create your own app
+  			], self.calss)
 	end
-
+	
 	def run
 	
 		begin
