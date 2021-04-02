@@ -43,6 +43,7 @@ class Metasploit3 < Msf::Auxiliary
 	def run
 	
 		begin
+			# 4
 			user = datastore['USERNAME']
 			pass = datastore['PASSWORD']
 			venid = datastore['VENUEID']
@@ -53,6 +54,7 @@ class Metasploit3 < Msf::Auxiliary
 			print_status("Base64 Encoded User/Pass: #{user_pass}") #debug
 			print_status("Base64 Decoded User/Pass: #{decode}") #debug
 
+			# 5
 			res = send_request_cgi({
 				'uri'     => "/v1/checkin?vid=#{venid}",
 				'version'	=> "1.1",
