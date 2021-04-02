@@ -33,7 +33,12 @@ class Metasploit3 < Msf::Auxiliary
 			[
 				# 3 
 				Opt::RHOST('api.foursquare.com'),
+				Opt::RPORT(443),        # foursquare api port
+				OptString.new('SSL', [false, "Negotiate SSL/TLS for outgoing connections", true]) # required by foursquare api
+				
 				OptString.new('VENUEID', [ true, 'foursquare venueid', '185675']), #Louve Paris France
+				
+				# 8
 				OptString.new('USERNAME', [ true, 'foursquare username', 'username']),
 				OptString.new('PASSWORD', [ true, 'foursquare password', 'password']),
 			], self.class)
